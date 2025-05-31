@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contador OBRAGOL Token</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0c10;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .contador {
+      text-align: center;
+      background: #1f2833;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    .valor {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .boton {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      background-color: #45a29e;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .boton:hover {
+      background-color: #66fcf1;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="contador">
+    <h1>🔥 Contador de tokens OBRAGOL 🔥</h1>
+    <div class="valor" id="tokensRestantes">Tokens restantes: 10,000</div>
+    <div class="valor" id="usdtAcumulado">USDT acumulados: 0.00</div>
+    <button class="boton" onclick="reiniciar()">🔄 Reiniciar contador</button>
+  </div>  <script>
+    let tokens = 10000;
+    let usdt = 0;
+    function simularVenta() {
+      if (tokens > 0) {
+        let vendidos = Math.floor(Math.random() * 5) + 1;
+        let precio = Math.random() * 0.08 + 0.01;
+        if (vendidos > tokens) vendidos = tokens;
+        tokens -= vendidos;
+        usdt += vendidos * precio;
+        actualizar();
+      }
+    }
+    function actualizar() {
+      document.getElementById("tokensRestantes").innerText = Tokens restantes: ${tokens.toLocaleString()};
+      document.getElementById("usdtAcumulado").innerText = USDT acumulados: ${usdt.toFixed(2)};
+    }
+    function reiniciar() {
+      tokens = 10000;
+      usdt = 0;
+      actualizar();
+    }
+    setInterval(simularVenta, 3500);
+  </script></body>
+</html>
